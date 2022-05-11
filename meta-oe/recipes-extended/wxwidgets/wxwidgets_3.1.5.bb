@@ -39,6 +39,7 @@ EXTRA_OECMAKE += " \
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_REGEX=builtin \
     -DwxPLATFORM_LIB_DIR=${@d.getVar('baselib').replace('lib', '')} \
+    ${@bb.utils.contains('PACKAGECONFIG', 'gtk', '-DwxUSE_PRIVATE_FONTS=ON', '', d)} \
 "
 EXTRA_OECMAKE:append:libc-musl = " \
     -DHAVE_LOCALE_T=OFF \
